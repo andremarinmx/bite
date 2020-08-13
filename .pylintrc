@@ -1,0 +1,9 @@
+[MASTER]
+disable=
+	C0114, # missing module docstring
+	C0115, # missing class docstring
+	C0116, # missing function docstring
+	C0326 # bad whitespace
+
+[FORMAT]
+indent-string=\t
