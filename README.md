@@ -53,9 +53,9 @@ biteapp (Raíz del proyecto)
 |	|	manifest.json (Configuración de la app)
 |	|	service-worker.js (Convierte el sitio en app)
 └---templates (Vistas de la app)
-|	|	*.j2
+|	|	*.html
 |	└---layouts (Disposición de la vista)
-|		└	*.j2
+|		└	*.html
 |	.gitignore (Archivos a excluir del repositorio)
 |	.pylintrc (Configuración del linter)
 |	api.py (Puntos de acceso asíncrono)
