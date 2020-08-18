@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="icon" href="/favicon.ico" />
+		<link rel="stylesheet" href="{{ url_for('static', filename = 'css/colours.css') }}" />
+
+		{% block links %}
+		{% endblock links %}
+
+		<title>Bite</title>
+	</head>
+	<body>
+		{% block body %}
+		{% endblock body %}
+
+		{% block scripts %}
+		{% endblock scripts %}
+	</body>
+</html>
