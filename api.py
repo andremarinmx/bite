@@ -8,4 +8,4 @@ def login_endpoint():
 
 @api.route('/register')
 def register_endpoint():
-    return '/register'
+	return '/register'

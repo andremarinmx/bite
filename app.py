@@ -2,10 +2,9 @@ import os
 from flask import (
 	Flask,
 	render_template,
+	request,
 	send_from_directory,
-	session, 
-	request
-	
+	session
 )
 from api import api
 from login import LoginHandler
@@ -23,58 +22,50 @@ login = LoginHandler(app)
 @app.route('/')
 def root():
 	return render_template('index.html')
-
-@app.route('/login')
-def login():
-	return '/login'
-	
-@app.route('/register')
-def register():
-    return '/register'
 	
 @app.route('/recover')
 def recover():
-    return '/recover'
+	return '/recover'
 
 @app.route('/home')
 def home():
 	return render_template('home.html')
 
-@app.route('/category/:id')
-def category(categoty_id:int):
-    return '/category/:id'
+@app.route('/category/<int:category_id>')
+def category(category_id: int):
+	return '/category/:id'
 
 @app.route('/search')
 def search():
-    return '/search'
+	return '/search'
 
-@app.route('/orders/:id')
-def orders(orders_id:int):
-    return '/orders/:id'
+@app.route('/orders/<int:order_id>')
+def orders(order_id: int):
+	return '/orders/:id'
 
 @app.route('/opinion')
 def opinion():
-    return '/opinion'
+	return '/opinion'
 
 @app.route('/profile')
 def profile():
-    return '/profile'
+	return '/profile'
 
 @app.route('/add_product')
 def add_product():
-    return '/add product'
+	return '/add_product'
 
-@app.route('/product/:id')
-def product(product_id:int):
-    return '/product/:id'
+@app.route('/product/<int:product_id>')
+def product(product_id: int):
+	return '/product/:id'
 
-@app.route('/edit_product/:id')
-def edit_product(edit_product_id:int):
-    return '/edit_product/:id'
+@app.route('/edit_product/<int:product_id>')
+def edit_product(product_id: int):
+	return '/edit_product/:id'
 
 @app.route('/settings')
 def settings():
-    return '/settings'
+	return '/settings'
 
 @app.route('/edit_profile')
 def edit_profile():
@@ -82,25 +73,25 @@ def edit_profile():
 
 @app.route('/about')
 def about():
-    return '/about'
+	return '/about'
 
-@app.route('/about/:page')
-def about_page(about_page:int):
-    return '/about/:page'
+@app.route('/about/<string:page>')
+def about_page(page: str):
+	return '/about/:page'
 
 # Archivos estáticos.
 
 @app.route('/manifest.json')
 def manifest():
-    return send_from_directory('static', 'manifest.json')
+	return send_from_directory('static', 'manifest.json')
 
 @app.route('/favicon.ico')
 def favicon():
-    return send_from_directory('static/icons', 'icon-72x72.png')
+	return send_from_directory('static/icons', 'icon-72x72.png')
 
 @app.route('/icons/<string:filename>')
 def icons(filename):
-    return send_from_directory('static/icons', filename)
+	return send_from_directory('static/icons', filename)
 
 if __name__ == '__main__':
 	app.run(host = '0.0.0.0', debug = True)
