@@ -1,8 +1,4 @@
-from flask import (
-	Blueprint,
-	request,
-	session
-)
+from flask import Blueprint, redirect, request, session
 
 api = Blueprint('api', __name__)
 
@@ -13,12 +9,8 @@ def login_endpoint():
 	if username and password:
 		# TODO: Agregar verificación con UserModel y establecer el id
 		# en la sesión.
-		return {
-			"message": "All correct."
-		}
-	return {
-		"message": "No valid data received (username, password)."
-	}, 400
+		return {"route": "/home"}
+	return {"message": "El correo electrónico o la contraseña son incorrectos."}, 400
 
 @api.route('/register', methods = ['POST'])
 def register_endpoint():
@@ -28,9 +20,9 @@ def register_endpoint():
 
 @api.route('/logout')
 def logout_user():
-	# TODO: Con try/except quitar el id del usuario de la sesión,
-	# luego volver al inicio.
-	return '/logout'
+	if session.get('user_id'):
+		session.pop('user_id')
+	return redirect('/')
 
 @api.route('/posts')
 def get_posts():
