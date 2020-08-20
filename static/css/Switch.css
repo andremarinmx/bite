@@ -1,40 +1,22 @@
-:root {
-	--active: #85bd76;
-	--inactive: #c6c6c6;
-}
-
-* {
-	margin: 0px;
-	padding: 0px;
-}
-
-.container {
-	display: flex;
-	width: 100%;
-	height: 100vh;
-	justify-content: center;
-	align-items: center;
-}
-
-.switch {
+.Switch {
 	position: relative;
 	width: 80px;
 	height: 40px;
 	appearance: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
-	background-color: var(--inactive);
+	background-color: #c6c6c6;
 	outline: none;
 	border-radius: 20px;
 	box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 	transition: 0.5s;
 }
 
-.switch:checked {
+.Switch:checked {
 	background-color: var(--active);
 }
 
-.switch:before {
+.Switch:before {
 	content: '';
 	position: absolute;
 	width: 40px;
@@ -48,6 +30,6 @@
 	transition: 0.5s;
 }
 
-.switch:checked:before {
+.Switch:checked:before {
 	left: 50%;
 }
