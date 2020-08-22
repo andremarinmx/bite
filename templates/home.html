@@ -1,5 +1,37 @@
 {% extends 'layouts/BaseLayout.html' %}
 
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/Header.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/NavigationBar.css') }}">
+{% endblock links %}
+
 {% block body %}
-	<h1>Bienvenido a la página principal.</h1>
+<div class="App">
+	<div class="Header">
+		bite
+	</div>
+
+	<div class="Container">
+		
+	</div>
+
+	<div class="NavigationBar">
+		<a class="NavigationButton current" href="/home">
+			<img src="{{ url_for('static', filename = 'images/home.svg') }}">
+			<p>Inicio</p>
+		</a>
+		<a class="NavigationButton" href="/search">
+			<img src="{{ url_for('static', filename = 'images/search.svg') }}">
+			<p>Buscar</p>
+		</a>
+		<a class="NavigationButton" href="/orders">
+			<img src="{{ url_for('static', filename = 'images/orders.svg') }}">
+			<p>Pedidos</p>
+		</a>
+		<a class="NavigationButton" href="/settings">
+			<img src="{{ url_for('static', filename = 'images/settings.svg') }}">
+			<p>Configuración</p>
+		</a>
+	</div>
+</div>
 {% endblock body %}
