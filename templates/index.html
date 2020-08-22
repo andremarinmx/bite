@@ -1,5 +1,70 @@
 {% extends 'layouts/BaseLayout.html' %}
 
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/Header.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/LoginForm.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/ButtonList.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/Installation.css') }}">
+{% endblock links %}
+
 {% block body %}
-	<h1>¡Bienvenido a Bite!</h1>
+<div class="App">
+	<div class="Header">
+		<img src="{{ url_for('static', filename = 'icons/icon-72x72.png') }}">
+	</div>
+
+	<div class="Container">
+		<div class="LoginForm">
+			<div class="Form">
+				<h2>Iniciar sesión</h2>
+		
+				<div id="loginError" class="errorMessage display-none"></div>
+		
+				<label for="loginEmail">Correo electrónico</label>
+				<input id="loginEmail" name="email" type="email" placeholder="Correo electrónico" required>
+	
+				<label for="loginPassword">Contraseña</label>
+				<input id="loginPassword" name="password" type="password" placeholder="Contraseña" required>
+		
+				<div class="ButtonList">
+					<button id="buttonShowRegister" class="ghost">No tengo una cuenta</button>
+					<button id="buttonLogin" >Iniciar sesión</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="Form display-none">
+			<h2>Registrarse</h2>
+
+			<div id="registerError" class="errorMessage display-none"></div>
+
+			<label for="registerFirstName">Nombre</label>
+			<input id="registerFirstName" name="first_name" type="text" placeholder="Nombre" required>
+
+			<label for="registerLastName">Apellido</label>
+			<input id="registerLastName" name="last_name" type="text" placeholder="Apellido" required>
+
+			<label for="registerEmail">Correo electrónico</label>
+			<input id="registerEmail" name="email" type="email" placeholder="Correo electrónico" required>
+
+			<label for="registerPassword1">Contraseña</label>
+			<input id="registerPassword1" name="password" type="password" placeholder="Contraseña" required>
+
+			<label for="registerPassword2">Confirmar contraseña</label>
+			<input id="registerPassword2" name="password" type="password" placeholder="Confirmar contraseña" required>
+
+			<div class="ButtonList">
+				<button id="buttonShowLogin" class="ghost">Ya tengo una cuenta</button>
+				<button id="buttonRegister">Registrarse</button>
+			</div>
+
+			<p class="Disclaimer">Al registrarse aceptas nuestros <a href="#">Términos de uso</a> y las <a href="#">Normas Comunitarias</a>.</p>
+		</div>
+	</div>
+
+	<div class="Installation">
+		<p>Obtén la aplicación para una mejor experiencia</p>
+		<button>Instalar</button>
+	</div>
+</div>
 {% endblock body %}
