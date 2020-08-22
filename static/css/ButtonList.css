@@ -1,0 +1,27 @@
+/*
+<div class="ButtonList">
+	<button id="buttonShowRegister" class="ghost">{secondary button caption}</button>
+	<button id="buttonLogin" >{caption}</button>
+</div>
+*/
+
+.ButtonList {
+	display: flex;
+	justify-content: space-between;
+}
+
+.ButtonList button {
+	padding: 8px;
+	min-width: 40%;
+	background-color: var(--accent);
+	color: #ffffff;
+	border: none;
+	cursor: pointer;
+	border-radius: 4px;
+	outline: none;
+}
+
+.ButtonList .ghost {
+	background-color: inherit;
+	color: var(--accent);
+}

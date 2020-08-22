@@ -1,0 +1,26 @@
+/*
+<div class="Page404">
+	<p>{message}</p>
+
+	<button onclick="window.history.back()" class="ReturnButton">{caption}</button>
+</div>
+*/
+
+.Page404 {
+	padding: 16px 0;
+	text-align: center;
+	font-size: 24px;
+}
+
+.ReturnButton {
+	margin: 16px;
+	padding: 12px;
+	background-color: var(--accent-1);
+	color: #ffffff;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	border: none;
+	border-radius: 8px;
+	outline: none;
+	cursor: pointer;
+}

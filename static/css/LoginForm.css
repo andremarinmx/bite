@@ -1,0 +1,57 @@
+/*
+<div class="LoginForm">
+	<div class="Form">
+		<h2>{form title}</h2>
+
+		<div id="loginError" class="errorMessage display-none"></div>
+
+		inputs
+
+		[ButtonList]
+	</div>
+	[...]
+</div>
+*/
+
+.LoginForm {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.Form {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--card-bg);
+	padding: 16px;
+	width: 90%;
+}
+
+.Form h2 {
+	margin-bottom: 12px;
+}
+
+.Form input {
+	margin-top: 4px;
+	margin-bottom: 16px;
+	padding: 6px;
+	outline: none;
+	border: solid 1px var(--accent);
+	border-radius: 4px;
+}
+
+.errorMessage {
+	background-color: #ff7373;
+	color: #fff3f3;
+	padding: 6px;
+	margin-bottom: 8px;
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+@media screen and (min-width: 500px) {
+	.Form {
+		width: 400px;
+		border-radius: 6px;
+	}
+}

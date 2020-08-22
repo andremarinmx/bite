@@ -15,5 +15,15 @@
 }
 
 body {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Lora', sans-serif;
+	background-color: var(--page-bg);
+}
+
+.Container {
+	margin-top: 60px;
+	margin-bottom: 60px;
+}
+
+.display-none {
+	display: none;
 }
