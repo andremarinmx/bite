@@ -1,10 +1,13 @@
 /*
 <div class="Header">
-	{caption}
+	{caption}|<img>
 </div>
 */
 
 .Header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -16,4 +19,9 @@
 	line-height: 60px;
 	font-weight: 700;
 	letter-spacing: 2px;
+}
+
+.Header img {
+	height: 50px;
+	width: 50px;
 }

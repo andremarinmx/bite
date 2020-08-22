@@ -8,12 +8,13 @@
 .ButtonList {
 	display: flex;
 	justify-content: space-between;
+	font-family: 'Open Sans', sans-serif;
 }
 
 .ButtonList button {
 	padding: 8px;
 	min-width: 40%;
-	background-color: var(--accent);
+	background-color: var(--accent-1);
 	color: #ffffff;
 	border: none;
 	cursor: pointer;
@@ -23,5 +24,5 @@
 
 .ButtonList .ghost {
 	background-color: inherit;
-	color: var(--accent);
+	color: var(--accent-1);
 }
