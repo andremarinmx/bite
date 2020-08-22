@@ -27,6 +27,7 @@ def create_tables():
 	db.create_all()
 
 @app.route('/')
+@login.logout_required
 def root():
 	return render_template('index.html')
 	
@@ -35,6 +36,7 @@ def recover():
 	return '/recover'
 
 @app.route('/home')
+@login.login_required
 def home():
 	return render_template('home.html')
 
