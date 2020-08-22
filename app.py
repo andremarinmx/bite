@@ -8,6 +8,7 @@ from flask import (
 )
 from api import api
 from login import LoginHandler
+from db import db
 
 app = Flask(__name__)
 app.register_blueprint(api)
@@ -96,6 +97,8 @@ def favicon():
 @app.route('/icons/<string:filename>')
 def icons(filename):
 	return send_from_directory('static/icons', filename)
+
+db.init_app(app)
 
 if __name__ == '__main__':
 	app.run(host = '0.0.0.0', debug = True)
