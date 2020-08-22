@@ -15,7 +15,7 @@ def login_endpoint():
 		user = UserModel.find_by_email(email)
 		if user is None:
 			return {"message": "El correo electrónico no está registrado."}, 401
-		if bcrypt.checkpw(password.encode('utf-8'), user.password):
+		if bcrypt.checkpw(password.encode('utf-8'), user.password.encode('utf-8')):
 			session['user_id'] = user.user_id
 			return {"route": "/home"}
 		return {"message": "La contraseña de acceso es incorrecta."}, 401
@@ -34,8 +34,8 @@ def register_endpoint():
 		if UserModel.find_by_email(email):
 			return {"message": "Ya existe una cuenta registrada con ese correo."}, 400
 		
-		hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-		new_user = UserModel(first_name, last_name, email, password)
+		hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+		new_user = UserModel(first_name, last_name, email, hashed_password)
 		new_user.save_to_db()
 
 		new_user = UserModel.find_by_email(email) # Get the same user, but with ID.
