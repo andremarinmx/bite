@@ -17,8 +17,14 @@ app.secret_key = os.environ.get('SECRET_KEY', '05d08a3aa04b7283bba6ebf3')
 app.config['LOGIN_REQUIRED_FALLBACK_PAGE'] = '/'
 app.config['LOGOUT_REQUIRED_FALLBACK_PAGE'] = '/home'
 app.config['LOGIN_SESSION_NAME'] = 'user_id'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///Data.db')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 login = LoginHandler(app)
+
+@app.before_first_request
+def create_tables():
+	db.create_all()
 
 @app.route('/')
 def root():
