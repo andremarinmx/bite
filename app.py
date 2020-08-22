@@ -39,8 +39,12 @@ def category(category_id: int):
 def search():
 	return '/search'
 
+@app.route('/orders')
+def orders():
+	return '/orders'
+
 @app.route('/orders/<int:order_id>')
-def orders(order_id: int):
+def order(order_id: int):
 	return '/orders/:id'
 
 @app.route('/opinion')
