@@ -23,7 +23,6 @@ def login_endpoint():
 
 @api.route('/register', methods = ['POST'])
 def register_endpoint():
-	# TODO: Validar con expresiones regulares.
 	data = request.get_json()
 	first_name = data.get('first_name')
 	last_name = data.get('last_name')
@@ -31,6 +30,17 @@ def register_endpoint():
 	password = data.get('password')
 
 	if first_name and last_name and email and password:
+		identityRegex = re.compile(r'^[a-záéíóúñ]{1,20}$', re.IGNORECASE)
+		emailRegex = re.compile(r'^[A-Za-z0-9_\-]+(\.[A-Za-z0-9_\-]+)*@([A-Za-z0-9_\-]+\.)+[a-z]{2,5}$')
+		passwordRegex = re.compile(r'.{4,}')
+
+		if identityRegex.match(first_name) is None or identityRegex.match(last_name) is None:
+			return {"message": "El formato del nombre y apellido no es válido; no puede contener símbolos o números."}, 400
+		if emailRegex.match(email) is None:
+			return {"message": "El correo no cumple con el formato solicitado."}
+		if passwordRegex.match(password) is None:
+			return {"message": "La contraseña no cumple con el formato solicitado."}
+
 		if UserModel.find_by_email(email):
 			return {"message": "Ya existe una cuenta registrada con ese correo."}, 400
 		

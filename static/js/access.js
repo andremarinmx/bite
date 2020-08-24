@@ -30,8 +30,8 @@ buttonLogin.addEventListener('click', async () => {
 	const email = document.getElementById('loginEmail')
 	const password = document.getElementById('loginPassword')
 
-	const emailRegex = /.+/
-	const passwordRegex = /.+/
+	const emailRegex = /^[A-Za-z0-9_\-]+(\.[A-Za-z0-9_\-]+)*@([A-Za-z0-9_\-]+\.)+[a-z]{2,5}$/
+	const passwordRegex = /.{4,}/
 
 	if (!emailRegex.test(email.value) || !passwordRegex.test(password.value)) {
 		loginError.textContent = 'El formato del correo o la contraseña no es válido'
@@ -70,9 +70,9 @@ buttonRegister.addEventListener('click', async () => {
 	const password1 = document.getElementById('registerPassword1')
 	const password2 = document.getElementById('registerPassword2')
 
-	const identityRegex = /.+/
-	const emailRegex = /.+/
-	const passwordRegex = /.+/
+	const identityRegex = /^[a-záéíóúñ]{1,20}$/i
+	const emailRegex = /^[A-Za-z0-9_\-]+(\.[A-Za-z0-9_\-]+)*@([A-Za-z0-9_\-]+\.)+[a-z]{2,5}$/
+	const passwordRegex = /.{4,}/
 
 	if (!identityRegex.test(firstName.value) || !identityRegex.test(lastName.value)) {
 		registerError.textContent = 'El formato del nombre y apellido no es válido; no puede contener símbolos o números.'
@@ -116,7 +116,7 @@ buttonRegister.addEventListener('click', async () => {
 	})
 	const data = await response.json()
 
-	if (response.status === 401) {
+	if (response.status !== 200) {
 		registerError.textContent = data.message
 		registerError.classList.remove('display-none')
 
