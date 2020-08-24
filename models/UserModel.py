@@ -1,4 +1,6 @@
 from db import db
+from hashlib import sha256
+from random import randint
 
 class UserModel(db.Model):
 	__tablename__ = 'Users'
@@ -8,21 +10,21 @@ class UserModel(db.Model):
 	last_name = db.Column(db.String(20))
 	email = db.Column(db.String(50), unique = True)
 	password = db.Column(db.String(80))
+	user_type = db.Column(db.String(10))
+	picture = db.Column(db.String(100))
+	active_state = db.Column(db.Integer())
+	recovery_key = db.Column(db.String(64))
 
 	def __init__(self, first_name, last_name, email, password):
 		self.first_name = first_name
 		self.last_name = last_name
 		self.email = email
 		self.password = password
+		self.user_type = 'Normal'
+		self.picture = 'default.png'
+		self.active_state = 1
+		self.recovery_key = sha256(str(randint(1, 9999)).encode('utf-8')).hexdigest()
 	
-	def json(self):
-		return {
-			"user_id": self.user_id,
-			"first_name": self.first_name,
-			"last_name": self.last_name,
-			"email": self.email
-		}
-
 	@classmethod
 	def find_by_id(cls, user_id):
 		return cls.query.filter_by(user_id = user_id).first()
