@@ -2,7 +2,7 @@
 	"name": "Bite",
 	"short_name": "Bite",
 	"theme_color": "#2f2d52",
-	"background_color": "#ffffff",
+	"background_color": "#2f2d52",
 	"display": "standalone",
 	"orientation": "portrait",
 	"scope": "/",
