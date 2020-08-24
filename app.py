@@ -27,6 +27,10 @@ login = LoginHandler(app)
 def create_tables():
 	db.create_all()
 
+@app.before_request
+def make_session_permanent():
+	session.permanent = True
+
 @app.route('/')
 @login.logout_required
 def root():
