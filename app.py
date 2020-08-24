@@ -8,6 +8,7 @@ from flask import (
 )
 from api import api
 from login import LoginHandler
+from models.UserModel import UserModel
 from db import db
 
 app = Flask(__name__)
@@ -45,12 +46,14 @@ def category(category_id: int):
 	return '/category/:id'
 
 @app.route('/search')
+@login.login_required
 def search():
-	return '/search'
+	return render_template('search.html')
 
 @app.route('/orders')
+@login.login_required
 def orders():
-	return '/orders'
+	return render_template('orders.html')
 
 @app.route('/orders/<int:order_id>')
 def order(order_id: int):
@@ -61,8 +64,10 @@ def opinion():
 	return '/opinion'
 
 @app.route('/profile')
+@login.login_required
 def profile():
-	return '/profile'
+	user = UserModel.find_by_id(session.get('user_id'))
+	return render_template('profile.html', user = user)
 
 @app.route('/add_product')
 def add_product():
@@ -77,8 +82,9 @@ def edit_product(product_id: int):
 	return '/edit_product/:id'
 
 @app.route('/settings')
+@login.login_required
 def settings():
-	return '/settings'
+	return render_template('settings.html')
 
 @app.route('/edit_profile')
 def edit_profile():
