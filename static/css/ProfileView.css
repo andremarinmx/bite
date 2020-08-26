@@ -1,0 +1,55 @@
+/*
+<div class="ProfileView">
+	<div>
+		{% if user.picture == 'default' %}
+		<img class="ProfilePicture" src="{{ url_for('static', filename = 'images/default.svg') }}">
+		{% else %}
+		<img class="ProfilePicture" src="{{ user.picture }}">
+		{% endif %}
+	</div>
+
+	<div class="UserInformation">
+		<h2>{{ user.first_name }} {{ user.last_name }}</h2>
+		<p>{{ user.email }}</p>
+	</div>
+
+	<a class="SettingsButton" href="/settings">
+		<img src="{{ url_for('static', filename = 'images/settings.svg') }}">
+	</a>
+</div>
+*/
+
+.ProfileView {
+	position: relative;
+	display: flex;
+	align-items: center;
+	background-color: var(--card-bg);
+	padding: 16px;
+	margin-bottom: 16px;
+	border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+}
+
+.ProfileView .ProfilePicture {
+	height: 80px;
+	object-fit: contain;
+	margin-right: 16px;
+	border-radius: 50%;
+	box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+}
+
+.ProfileView .SettingsButton {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+}
+
+.ProfileView .SettingsButton img {
+	width: 35px;
+	object-fit: contain;
+	cursor: pointer;
+}
+
+.ProfileView .UserInformation p {
+	font-family: 'Open Sans', sans-serif;
+}

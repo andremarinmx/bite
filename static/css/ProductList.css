@@ -1,0 +1,43 @@
+/*
+<div class="ProductList">
+	{% for product in [] %}
+	<a class="Product" href="#">{{ product }}</a>
+	{% else %}
+	<p class="NoProducts">Aún no tienes favoritos.</p>
+	{% endfor %}
+</div>
+*/
+
+.ProductSection {
+	margin: 16px;
+}
+
+.ProductSection h3 {
+	margin-bottom: 4px;
+}
+
+.ProductList {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.Product {
+	display: block;
+	padding: 16px;
+	margin-bottom: 12px;
+	background-color: var(--card-bg);
+	color: inherit;
+	text-decoration: none;
+	border: solid 1px rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+}
+
+.NoProducts {
+	padding: 16px;
+	background-color: var(--card-bg);
+	text-align: center;
+	border: solid 1px rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+}

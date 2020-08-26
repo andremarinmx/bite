@@ -21,7 +21,7 @@ class UserModel(db.Model):
 		self.email = email
 		self.password = password
 		self.user_type = 'Normal'
-		self.picture = 'default.png'
+		self.picture = 'default'
 		self.active_state = 1
 		self.recovery_key = sha256(str(randint(1, 9999)).encode('utf-8')).hexdigest()
 	

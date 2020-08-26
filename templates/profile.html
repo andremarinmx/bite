@@ -2,6 +2,8 @@
 
 {% block links %}
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/Header.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/ProfileView.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/ProductList.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/NavigationBar.css') }}">
 {% endblock links %}
 
@@ -12,7 +14,40 @@
 	</div>
 
 	<div class="Container">
-		
+		<div class="ProfileView">
+			<div>
+				{% if user.picture == 'default' %}
+				<img class="ProfilePicture" src="{{ url_for('static', filename = 'images/default.svg') }}">
+				{% else %}
+				<img class="ProfilePicture" src="{{ user.picture }}">
+				{% endif %}
+			</div>
+
+			<div class="UserInformation">
+				<h2>{{ user.first_name }} {{ user.last_name }}</h2>
+				<p>{{ user.email }}</p>
+			</div>
+
+			<a class="SettingsButton" href="/settings">
+				<img src="{{ url_for('static', filename = 'images/settings.svg') }}">
+			</a>
+		</div>
+
+		<div class="ProductSection">
+			{% if user.user_type == 'Normal' %}
+			<h3>Favoritos</h3>
+
+			<div class="ProductList">
+				{% for product in [] %}
+				<a class="Product" href="#">{{ product }}</a>
+				{% else %}
+				<p class="NoProducts">Aún no tienes favoritos.</p>
+				{% endfor %}
+			</div>
+			{% elif user.user_type == 'Vendor' %}
+			<h3>Catálogo</h3>
+			{% endif %}
+		</div>
 	</div>
 
 	<div class="NavigationBar">
