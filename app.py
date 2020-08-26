@@ -1,13 +1,13 @@
 import os
-from flask import (
-	Flask,
-	render_template,
-	request,
-	send_from_directory,
-	session
-)
+from flask import Flask, render_template, request, send_from_directory, session
 from api import api
 from login import LoginHandler
+from models.CategoryModel import CategoryModel
+from models.FavouriteModel import FavouriteModel
+from models.OpinionModel import OpinionModel
+from models.OrderModel import OrderModel
+from models.ProductModel import ProductModel
+from models.ReportModel import ReportModel
 from models.UserModel import UserModel
 from db import db
 
