@@ -88,7 +88,8 @@ def edit_product(product_id: int):
 @app.route('/settings')
 @login.login_required
 def settings():
-	return render_template('settings.html')
+	user = UserModel.find_by_id(session.get('user_id'))
+	return render_template('settings.html', user = user)
 
 @app.route('/edit_profile')
 def edit_profile():

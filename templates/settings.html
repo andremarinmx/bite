@@ -2,17 +2,27 @@
 
 {% block links %}
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/Header.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/ButtonReturn.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/Settings.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/NavigationBar.css') }}">
 {% endblock links %}
 
 {% block body %}
 <div class="App">
+	<div class="ButtonReturn">
+		<img src="{{ url_for('static', filename = 'images/return.svg') }}">
+	</div>
+
 	<div class="Header">
 		bite
 	</div>
 
 	<div class="Container">
+		<div class="AccountView">
+			<p class="AccountName">{{ user.first_name }} {{ user.last_name }}</p>
+			<p class="AccountMail">{{ user.email }}</p>
+		</div>
+
 		<div class="Settings">
 			<p>Cuenta</p>
 		
@@ -44,5 +54,5 @@
 {% endblock body %}
 
 {% block scripts %}
-
+<script src="{{ url_for('static', filename = 'js/ButtonReturn.js') }}"></script>
 {% endblock scripts %}
