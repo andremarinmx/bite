@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, request, session
-from models.UserModel import UserModel
+from models.User import UserModel
 import re
 import bcrypt
 
