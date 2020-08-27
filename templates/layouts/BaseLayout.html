@@ -3,9 +3,10 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="theme-color" content="#2f2d52">
 
-		<link rel="icon" href="/favicon.ico">
-		<link rel="manifest" href="/manifest.json">
+		<link rel="icon" href="{{ url_for('static', filename = 'favicon.png') }}">
+		<link rel="manifest" href="{{ url_for('static', filename = 'manifest.json') }}">
 		<link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}">
 
 		{% block links %}
