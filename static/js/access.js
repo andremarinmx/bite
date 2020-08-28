@@ -33,7 +33,7 @@ buttonLogin.addEventListener('click', async () => {
 	const emailRegex = /^[A-Za-z0-9_\-]+(\.[A-Za-z0-9_\-]+)*@([A-Za-z0-9_\-]+\.)+[a-z]{2,5}$/
 	const passwordRegex = /.{4,}/
 
-	if (!emailRegex.test(email.value) || !passwordRegex.test(password.value)) {
+	if (!emailRegex.test(email.value.trim()) || !passwordRegex.test(password.value)) {
 		loginError.textContent = 'El formato del correo o la contraseña no es válido'
 		loginError.classList.remove('display-none')
 
@@ -46,7 +46,7 @@ buttonLogin.addEventListener('click', async () => {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
-			email: email.value,
+			email: email.value.trim(),
 			password: password.value
 		})
 	})
@@ -74,14 +74,14 @@ buttonRegister.addEventListener('click', async () => {
 	const emailRegex = /^[A-Za-z0-9_\-]+(\.[A-Za-z0-9_\-]+)*@([A-Za-z0-9_\-]+\.)+[a-z]{2,5}$/
 	const passwordRegex = /.{4,}/
 
-	if (!identityRegex.test(firstName.value) || !identityRegex.test(lastName.value)) {
+	if (!identityRegex.test(firstName.value.trim()) || !identityRegex.test(lastName.value.trim())) {
 		registerError.textContent = 'El formato del nombre y apellido no es válido; no puede contener símbolos o números.'
 		registerError.classList.remove('display-none')
 
 		return
 	}
 
-	if (!emailRegex.test(email.value)) {
+	if (!emailRegex.test(email.value.trim())) {
 		registerError.textContent = 'El correo no cumple con el formato solicitado.'
 		registerError.classList.remove('display-none')
 
@@ -108,9 +108,9 @@ buttonRegister.addEventListener('click', async () => {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
-			first_name: firstName.value,
-			last_name: lastName.value,
-			email: email.value,
+			first_name: firstName.value.trim(),
+			last_name: lastName.value.trim(),
+			email: email.value.trim(),
 			password: password1.value
 		})
 	})
