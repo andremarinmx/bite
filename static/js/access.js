@@ -75,7 +75,7 @@ buttonRegister.addEventListener('click', async () => {
 	const passwordRegex = /.{4,}/
 
 	if (!identityRegex.test(firstName.value.trim()) || !identityRegex.test(lastName.value.trim())) {
-		registerError.textContent = 'El formato del nombre y apellido no es válido; no puede contener símbolos o números.'
+		registerError.textContent = 'El nombre y apellido solo puede tener letras.'
 		registerError.classList.remove('display-none')
 
 		return
@@ -89,14 +89,14 @@ buttonRegister.addEventListener('click', async () => {
 	}
 
 	if (!passwordRegex.test(password1.value)) {
-		registerError.textContent = 'La contraseña no cumple con el formato solicitado.'
+		registerError.textContent = 'La contraseña debe tener un mínimo de 4 caracteres.'
 		registerError.classList.remove('display-none')
 
 		return
 	}
 
 	if (password1.value !== password2.value) {
-		registerError.textContent = 'Las contraseñas no coinciden.'
+		registerError.textContent = 'Las contraseñas no coinciden entre sí.'
 		registerError.classList.remove('display-none')
 
 		return

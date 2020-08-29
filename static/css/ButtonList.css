@@ -16,6 +16,7 @@
 	min-width: 40%;
 	background-color: var(--accent-1);
 	color: #ffffff;
+	font-size: 16px;
 	border: none;
 	cursor: pointer;
 	border-radius: 4px;
