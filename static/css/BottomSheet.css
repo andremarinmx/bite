@@ -1,0 +1,70 @@
+/*
+<div class="BottomSheet modal-hidden">
+	<div class="ModalText">
+		<strong>{title}</strong>
+		<p>{text}</p>
+	</div>
+	<div class="ModalButtons">
+		<button class="[modal-ghost]">{caption}</button>
+		<button>{caption}</button>
+	</div>
+</div>
+*/
+
+.BottomSheet {
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	z-index: 2;
+	bottom: 0;
+	height: 30vh;
+	width: 100%;
+	padding: 16px;
+	box-sizing: border-box;
+	background-color: var(--card-bg);
+	border-top-left-radius: 5vh;
+	border-top-right-radius: 5vh;
+	text-align: center;
+	font-size: 18px;
+	font-family: 'Open Sans', sans-serif;
+	box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.2);
+}
+
+.BottomSheet .ModalText > strong {
+	font-size: 20px;
+	margin-bottom: 24px;
+}
+
+.BottomSheet .ModalButtons {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: flex-end;
+}
+
+.BottomSheet .ModalButtons button {
+	background-color: var(--accent-1);
+	color: #ffffff;
+	width: 40%;
+	padding: 8px;
+	border: solid 1px var(--accent-1);
+	border-radius: 8px;
+	outline: none;
+	cursor: pointer;
+}
+
+.BottomSheet .ModalButtons button.modal-ghost {
+	background-color: inherit;
+	color: var(--accent-1);
+}
+
+.BottomSheet.modal-hidden {
+	transform: translateY(30vh);
+}
+
+@media screen and (imn-width: 600px) {
+	.BottomSheet {
+		width: 500px;
+		left: calc(50% - 250px);
+	}
+}

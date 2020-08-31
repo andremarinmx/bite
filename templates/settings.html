@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/Header.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/ButtonReturn.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/Settings.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/BottomSheet.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/NavigationBar.css') }}">
 {% endblock links %}
 
@@ -52,10 +53,20 @@
 
 		<div class="Settings">
 			<div class="OptionList">
-				<a href="/logout" class="Option danger">Cerrar sesión</a>
+				<span id="buttonLogout" class="Option danger">Cerrar sesión</span>
 			</div>
 		</div>
 
+		<div class="BottomSheet modal-hidden">
+			<div class="ModalText">
+				<strong>Cerrar sesión</strong>
+				<p>¿Realmente deseas cerrar sesión?</p>
+			</div>
+			<div class="ModalButtons">
+				<button id="logoutCancel" class="modal-ghost">Cancelar</button>
+				<button id="logoutConfirm">Cerrar sesión</button>
+			</div>
+		</div>
 	</div>
 
 	<div class="NavigationBar">
@@ -81,4 +92,5 @@
 
 {% block scripts %}
 <script src="{{ url_for('static', filename = 'js/ButtonReturn.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/LogoutModal.js') }}"></script>
 {% endblock scripts %}
