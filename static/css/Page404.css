@@ -1,7 +1,7 @@
 /*
 <div class="Page404">
+	<img src="{{ url_for('static', filename = 'images/404.svg') }}" alt="Not found">
 	<p>{message}</p>
-
 	<button onclick="window.history.back()" class="ReturnButton">{caption}</button>
 </div>
 */
@@ -12,7 +12,14 @@
 	font-size: 24px;
 }
 
-.ReturnButton {
+.Page404 img {
+	width: 40%;
+	max-width: 200px;
+	object-fit: contain;
+	border-radius: 50%;
+}
+
+.Page404 .ReturnButton {
 	margin: 16px;
 	padding: 12px;
 	background-color: var(--accent-1);

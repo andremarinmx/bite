@@ -1,0 +1,44 @@
+{% extends 'layouts/BaseLayout.html' %}
+
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/Header.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/Page404.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/NavigationBar.css') }}">
+{% endblock links %}
+
+{% block body %}
+<div class="App">
+	<div class="Header">
+		bite
+	</div>
+
+	<div class="Container">
+		<div class="Page404">
+			<img src="{{ url_for('static', filename = 'images/404.svg') }}" alt="Not found">
+			<p>No se encontró la página que buscabas</p>
+			<button onclick="window.history.back()" class="ReturnButton">Volver a la página anterior</button>
+		</div>
+	</div>
+
+	{% if user_id %}
+	<div class="NavigationBar">
+		<a class="NavigationButton" href="/home">
+			<img src="{{ url_for('static', filename = 'images/home.svg') }}">
+			<p>Inicio</p>
+		</a>
+		<a class="NavigationButton" href="/search">
+			<img src="{{ url_for('static', filename = 'images/search.svg') }}">
+			<p>Buscar</p>
+		</a>
+		<a class="NavigationButton" href="/orders">
+			<img src="{{ url_for('static', filename = 'images/orders.svg') }}">
+			<p>Pedidos</p>
+		</a>
+		<a class="NavigationButton" href="/profile">
+			<img src="{{ url_for('static', filename = 'images/account.svg') }}">
+			<p>Cuenta</p>
+		</a>
+	</div>
+	{% endif %}
+</div>
+{% endblock body %}

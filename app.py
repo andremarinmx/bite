@@ -31,11 +31,16 @@ def create_tables():
 def make_session_permanent():
 	session.permanent = True
 
+@app.errorhandler(404)
+def not_found(e):
+	user_id = session.get('user_id')
+	return render_template('404.html', user_id = user_id), 404
+
 @app.route('/')
 @login.logout_required
 def root():
 	return render_template('index.html')
-	
+
 @app.route('/recover')
 def recover():
 	return '/recover'
