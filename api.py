@@ -7,6 +7,7 @@ api = Blueprint('api', __name__)
 
 @api.route('/login', methods = ['POST'])
 def login_endpoint():
+	"""Verifica que los datos del usuario sean correctos y lo agrega a la sesión."""
 	data = request.get_json()
 	email = data.get('email')
 	password = data.get('password')
@@ -23,6 +24,7 @@ def login_endpoint():
 
 @api.route('/register', methods = ['POST'])
 def register_endpoint():
+	"""Verifica que el usuario no exista aún y lo ingresa a la base de datos."""
 	data = request.get_json()
 	first_name = data.get('first_name')
 	last_name = data.get('last_name')
@@ -30,16 +32,16 @@ def register_endpoint():
 	password = data.get('password')
 
 	if first_name and last_name and email and password:
-		identityRegex = re.compile(r'^[a-záéíóúñ]{1,20}$', re.IGNORECASE)
+		identityRegex = re.compile(r'^[a-záéíóúñ]{1,20}( [a-záéíóúñ]{1,20})?$', re.IGNORECASE)
 		emailRegex = re.compile(r'^[A-Za-z0-9_\-]+(\.[A-Za-z0-9_\-]+)*@([A-Za-z0-9_\-]+\.)+[a-z]{2,5}$')
 		passwordRegex = re.compile(r'.{4,}')
 
 		if identityRegex.match(first_name) is None or identityRegex.match(last_name) is None:
-			return {"message": "El formato del nombre y apellido no es válido; no puede contener símbolos o números."}, 400
+			return {"message": "El nombre y apellido no es válido."}, 400
 		if emailRegex.match(email) is None:
-			return {"message": "El correo no cumple con el formato solicitado."}
+			return {"message": "El correo no parece ser un correo..."}
 		if passwordRegex.match(password) is None:
-			return {"message": "La contraseña no cumple con el formato solicitado."}
+			return {"message": "La contraseña no debe ser tan corta."}
 
 		if UserModel.find_by_email(email):
 			return {"message": "Ya existe una cuenta registrada con ese correo."}, 400
@@ -55,12 +57,14 @@ def register_endpoint():
 
 @api.route('/logout')
 def logout_user():
+	"""Elimina al usuario de la sesión si ya está iniciada."""
 	if session.get('user_id'):
 		session.pop('user_id')
 	return redirect('/')
 
 @api.route('/posts')
 def get_posts():
+	"""Devuelve una lista de productos marcados como públicos."""
 	# TODO: Con ProductModel obtener una lista de productos públicos y
 	# enviarlos como JSON.
 	return []

@@ -62,7 +62,7 @@
 	transform: translateY(30vh);
 }
 
-@media screen and (imn-width: 600px) {
+@media screen and (min-width: 600px) {
 	.BottomSheet {
 		width: 500px;
 		left: calc(50% - 250px);

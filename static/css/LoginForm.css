@@ -1,5 +1,5 @@
 /*
-<div class="LoginForm">
+<form class="LoginForm" method="post">
 	<div class="Form">
 		<h2>{form title}</h2>
 
@@ -10,7 +10,7 @@
 		[ButtonList]
 	</div>
 	[...]
-</div>
+</form>
 */
 
 .LoginForm {
