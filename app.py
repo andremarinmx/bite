@@ -115,7 +115,8 @@ def settings():
 @app.route('/edit_profile')
 def edit_profile():
 	"""Se modifican los datos del perfil del usuario."""
-	return '/edit_profile'
+	user = UserModel.find_by_id(session.get('user_id'))
+	return render_template('edit_profile.html', user = user)
 
 @app.route('/about')
 def about():

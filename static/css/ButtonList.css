@@ -11,7 +11,7 @@
 	font-family: 'Open Sans', sans-serif;
 }
 
-.ButtonList button {
+.ButtonList > button {
 	padding: 8px;
 	min-width: 40%;
 	background-color: var(--accent-1);
@@ -23,7 +23,15 @@
 	outline: none;
 }
 
-.ButtonList .ghost {
+.ButtonList > .ghost {
 	background-color: inherit;
 	color: var(--accent-1);
+}
+
+.ButtonList > button:disabled {
+	opacity: 0.75;
+}
+
+.to-right {
+	margin-left: auto;
 }

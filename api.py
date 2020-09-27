@@ -62,6 +62,38 @@ def logout_user():
 		session.pop('user_id')
 	return redirect('/')
 
+@api.route('/users', methods = ['PUT'])
+def update_user():
+	"""Actualiza los datos del usuario (nombre, apellido y correo)."""
+	data = request.get_json()
+	first_name = data.get('first_name')
+	last_name = data.get('last_name')
+	email = data.get('email')
+
+	user_id = session.get('user_id')
+	if not user_id:
+		return {"message": "No tiene permiso para modificar los datos."}, 401
+
+	if first_name and last_name and email:
+		identityRegex = re.compile(r'^[a-záéíóúñ]{1,20}( [a-záéíóúñ]{1,20})?$', re.IGNORECASE)
+		emailRegex = re.compile(r'^[A-Za-z0-9_\-]+(\.[A-Za-z0-9_\-]+)*@([A-Za-z0-9_\-]+\.)+[a-z]{2,5}$')
+
+		if identityRegex.match(first_name) is None or identityRegex.match(last_name) is None:
+			return {"message": "El nombre y apellido no es válido."}, 400
+		if emailRegex.match(email) is None:
+			return {"message": "El correo no parece ser un correo..."}
+
+		user = UserModel.find_by_id(user_id)
+		if user:
+			user.first_name = first_name
+			user.last_name = last_name
+			user.email = email
+			user.save_to_db()
+
+			return {"message": "Datos actualizados correctamente."}
+		return {"message": "El usuario indicado no existe."}, 404
+	return {"message": "Los datos de registro ingresados no son válidos."}, 400
+
 @api.route('/posts')
 def get_posts():
 	"""Devuelve una lista de productos marcados como públicos."""

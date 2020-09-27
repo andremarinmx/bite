@@ -1,0 +1,78 @@
+/*
+<form class="ProfileForm" method="post">
+	<div class="Form">
+		<h2>{title}</h2>
+
+		<div>
+			{% if user.picture == 'default' %}
+			<img class="ProfilePicture" src="{{ url_for('static', filename = 'images/default.svg') }}">
+			{% else %}
+			<img class="ProfilePicture" src="{{ user.picture }}">
+			{% endif %}
+		</div>
+
+		<div class="errorMessage display-none"></div>
+
+		inputs
+
+		ButtonList
+	</div>
+</form>
+*/
+
+.ProfileForm {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.ProfilePicture {
+	display: block;
+	height: 80px;
+	width: 80px;
+	margin: 0px auto 4px auto;
+	border-radius: 50%;
+	box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+}
+
+.Form {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--card-bg);
+	padding: 16px;
+	width: 90%;
+	font-family: 'Open Sans', sans-serif;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.Form h2 {
+	font-family: 'Lora', serif;
+	margin-bottom: 12px;
+}
+
+.Form input {
+	margin-top: 4px;
+	margin-bottom: 16px;
+	padding: 6px;
+	font-size: 14px;
+	outline: none;
+	border: solid 1px var(--accent-1);
+	border-radius: 4px;
+}
+
+.errorMessage {
+	background-color: #ff7373;
+	color: #fff3f3;
+	padding: 6px;
+	margin-bottom: 8px;
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+@media screen and (min-width: 600px) {
+	.Form {
+		width: 500px;
+		border-radius: 16px;
+	}
+}

@@ -1,0 +1,76 @@
+{% extends 'layouts/BaseLayout.html' %}
+
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/Header.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/ButtonReturn.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/ProfileForm.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/ButtonList.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/NavigationBar.css') }}">
+{% endblock links %}
+
+{% block body %}
+<div class="App">
+	<div class="ButtonReturn">
+		<img src="{{ url_for('static', filename = 'images/return.svg') }}">
+	</div>
+
+	<div class="Header">
+		bite
+	</div>
+
+	<div class="Container">
+		<form id="profileDataForm" class="ProfileForm" method="post">
+			<div class="Form">
+				<h2>Modificar datos</h2>
+
+				<div>
+					{% if user.picture == 'default' %}
+					<img class="ProfilePicture" src="{{ url_for('static', filename = 'images/default.svg') }}">
+					{% else %}
+					<img class="ProfilePicture" src="{{ user.picture }}">
+					{% endif %}
+				</div>
+		
+				<div id="profileError" class="errorMessage display-none"></div>
+		
+				<label for="firstName">Nombre</label>
+				<input id="firstName" name="first_name" type="text" placeholder="Nombre" value="{{ user.first_name }}">
+	
+				<label for="lastName">Apellido</label>
+				<input id="lastName" name="last_name" type="text" placeholder="Apellido" value="{{ user.last_name }}">
+	
+				<label for="email">Correo electrónico</label>
+				<input id="email" name="email" type="email" placeholder="Correo electrónico" value="{{ user.email }}">
+		
+				<div class="ButtonList">
+					<button id="buttonUpdateData" class="to-right" disabled>Guardar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="NavigationBar">
+		<a class="NavigationButton" href="/home">
+			<img src="{{ url_for('static', filename = 'images/home.svg') }}">
+			<p>Inicio</p>
+		</a>
+		<a class="NavigationButton" href="/search">
+			<img src="{{ url_for('static', filename = 'images/search.svg') }}">
+			<p>Buscar</p>
+		</a>
+		<a class="NavigationButton" href="/orders">
+			<img src="{{ url_for('static', filename = 'images/orders.svg') }}">
+			<p>Pedidos</p>
+		</a>
+		<a class="NavigationButton current" href="/profile">
+			<img src="{{ url_for('static', filename = 'images/account.svg') }}">
+			<p>Cuenta</p>
+		</a>
+	</div>
+</div>
+{% endblock body %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename = 'js/ButtonReturn.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/ProfileForm.js') }}"></script>
+{% endblock scripts %}
